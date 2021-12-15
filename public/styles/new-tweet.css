@@ -1,6 +1,6 @@
 .new-tweet {
   width: 100%;
-  padding: 0 70px;
+  /* padding: 0 70px; */
 }
 form {
   display: flex;
@@ -36,4 +36,67 @@ form .under-border {
 }
 .over {
   color: red;
+}
+
+
+
+/* tweet text */
+.tweet {
+  /* margin: 10px auto; */
+  padding: 30px;
+  border: 4px solid #111111;
+  /* width: 90%; */
+  background-color: #F5F1ED;
+}
+.tweet header {
+  display: flex;
+  background-color: #F5F1ED;
+  background-image: none;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+.tweetbody {
+  width: 100%;
+  margin-top: 1em;
+}
+.tweetbody:hover {
+  box-shadow: 7px 6px 7px 0px #3477d9c2;
+}
+.tweet-desciption{
+    padding: 10px 0;
+    min-height: 30px
+}
+.tweet header img {
+    width: 80px;
+    height: 80px;
+}
+.tweet-profile {
+  display: flex;
+  justify-content: space-between;
+    /* display: flex;
+    align-items: center; */
+}
+.tweet-footer {
+  border-top: 3px solid #111111;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+}
+.imagename p {
+  display: inline-block;
+  margin: 0
+}
+.tweet-profile p {
+  margin: 0;
+}
+
+.fa-flag:hover {
+  color: #f5b221;
+}
+.fa-retweet:hover {
+  color: #f5b221;
+}
+.fa-heart:hover {
+  color: #f5b221;
 }
