@@ -7,17 +7,17 @@ const tweetData = {
   "user": {
     "name": "Newton",
     "avatars": "https://i.imgur.com/73hZDYK.png",
-      "handle": "@SirIsaac"
-    },
+    "handle": "@SirIsaac"
+  },
   "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
+    "text": "If I have seen further it is by standing on the shoulders of giants"
+  },
   "created_at": 1461116232227
 }
 // const $tweet = createTweetElement(tweetData);
 
 // Test / driver code (temporary)
- // to see what it looks like
+// to see what it looks like
 // to add it to the page so we can make sure it's got all the right elements, classes, etc.
 const renderTweet = (tweets) => {
   let tweetContainer = $('#tweetContainer').html('')
@@ -74,17 +74,29 @@ const data = [
     "user": {
       "name": "Descartes",
       "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
+      "handle": "@rd"
+    },
     "content": {
       "text": "Je pense , donc je suis"
     },
     "created_at": 1461113959088
   }
 ]
-
-
 // $('#tweets-container').append($tweet);
 // const $tweet = createTweetElement(tweetData);
 $(document).ready(function () {
   renderTweet(data);
+
+  // Submit tweet
+  $("#tweetForm").on('submit', function (event) {
+    event.preventDefault();
+    const data = {};
+    $(this).serializeArray().map(function (x) {
+      data[x.name] = x.value;
+    });
+    const action = $(this).attr('action');
+    $.post(action, data).done(function (data) {
+      $("#tweet-text").val('');
+    });
+  })
 })
