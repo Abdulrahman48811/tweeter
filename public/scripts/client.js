@@ -1,3 +1,5 @@
+// const { reset } = require("nodemon");
+
 /*
  * Client-side JS logic goes here
  * jQuery is already loaded
@@ -21,14 +23,14 @@ const tweetData = {
 // to add it to the page so we can make sure it's got all the right elements, classes, etc.
 const renderTweet = (tweets) => {
   let tweetContainer = $('#tweetContainer').html('')
-  tweets.forEach(tweet => {
+  tweets.reverse().forEach(tweet => {
     let tweetElements = createTweetElement(tweet)
     tweetContainer.prepend(tweetElements);
   });
 }
 const createTweetElement = (tweetData) => {
   const $tweet = $(`<article>`).addClass('tweet')
-  console.log(tweetData);
+  // console.log(tweetData);
   let html = `
     <div>
       <div class="tweet-profile">
@@ -43,60 +45,55 @@ const createTweetElement = (tweetData) => {
     ${tweetData.content.text}
     </div>
     <div class="tweet-footer">
-      <span>${timeago().format(tweetData.created_at)}</span>
+      <span>${timeago().format(tweetData.created_at +420000)}</span>
       <div>
         <i class="fas fa-flag"></i>
         <i class="fas fa-retweet"></i>
         <i class="fas fa-heart"></i>
       </div>
     </div>`
-  let tweetElement = $tweet.append(html);
+  let tweetElement = $('#tweetContainer').append(html);
   // document.getElementById('id-tweet').innerHTML = tweetElement;
   return tweetElement;
 }
 
 const $tweet = createTweetElement(tweetData);
-
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd"
-    },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-]
-// $('#tweets-container').append($tweet);
-// const $tweet = createTweetElement(tweetData);
 $(document).ready(function () {
-  renderTweet(data);
-
   // Submit tweet
   $("#tweetForm").on('submit', function (event) {
     event.preventDefault();
-    const data = {};
-    $(this).serializeArray().map(function (x) {
-      data[x.name] = x.value;
-    });
-    const action = $(this).attr('action');
-    $.post(action, data).done(function (data) {
-      $("#tweet-text").val('');
-    });
+    const tweetValue = $("#tweet-text").val()
+    if (!isTweetTextValid(tweetValue)) {
+      return alert("Invalid Tweet Length");
+    };
+    console.log(event.target);
+    console.log(this);
+    $.ajax({
+      url: '/tweets',
+      method: 'POST',
+      data: $(this).serialize()
+    }).then(data => {
+      loadTweets();
+    })
+    $('form').trigger('reset');
   })
-})
+  const loadTweets = () => {
+    $.ajax({
+      url: '/tweets',
+      method: 'GET'
+    })
+      .then((data) => {
+        renderTweet(data);
+      })
+      .catch((err) => console.log(err));
+  };
+  loadTweets();
+});
+
+const isTweetTextValid = (tweetText) => {
+  if (tweetText.length > 140) {
+    return false;
+  }
+  return true;
+}
+
