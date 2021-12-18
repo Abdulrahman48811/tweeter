@@ -17,7 +17,11 @@ const tweetData = {
   "created_at": 1461116232227
 }
 // const $tweet = createTweetElement(tweetData);
-
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
 // Test / driver code (temporary)
 // to see what it looks like
 // to add it to the page so we can make sure it's got all the right elements, classes, etc.
@@ -32,26 +36,28 @@ const createTweetElement = (tweetData) => {
   const $tweet = $(`<article>`).addClass('tweet')
   // console.log(tweetData);
   let html = `
+<article class="tweetbody">
     <div>
       <div class="tweet-profile">
         <div class='imagename'>
          <img src="${tweetData.user.avatars}" />
-        <p>${tweetData.user.name}</p>
-      </div>
+          <p>${tweetData.user.name}</p> 
+        </div>
         <p>${tweetData.user.handle}</p>
       </div>
     </div>
     <div class="tweet-desciption">
-    ${tweetData.content.text}
+      ${escape(tweetData.content.text)}
     </div>
     <div class="tweet-footer">
-      <span>${timeago().format(tweetData.created_at +420000)}</span>
+      <span>${timeago().format(tweetData.created_at)}</span>
       <div>
         <i class="fas fa-flag"></i>
         <i class="fas fa-retweet"></i>
         <i class="fas fa-heart"></i>
       </div>
-    </div>`
+    </div>
+    </article>`
   let tweetElement = $('#tweetContainer').append(html);
   // document.getElementById('id-tweet').innerHTML = tweetElement;
   return tweetElement;
@@ -64,7 +70,7 @@ $(document).ready(function () {
     event.preventDefault();
     const tweetValue = $("#tweet-text").val()
     if (!isTweetTextValid(tweetValue)) {
-      return alert("Invalid Tweet Length");
+      return renderError("Tweet is too long!");
     };
     console.log(event.target);
     console.log(this);
@@ -88,12 +94,19 @@ $(document).ready(function () {
       .catch((err) => console.log(err));
   };
   loadTweets();
+
 });
 
-const isTweetTextValid = (tweetText) => {
-  if (tweetText.length > 140) {
-    return false;
-  }
-  return true;
-}
 
+const isTweetTextValid = (tweetText) => {
+    if (tweetText.length > 140) {
+      return false;
+    }
+    return true;
+}
+  
+const renderError = function (message) {
+  $(".error").slideDown().text(message)
+};
+
+$(".error").slideUp()

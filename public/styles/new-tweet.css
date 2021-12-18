@@ -39,7 +39,9 @@ form .under-border {
 }
 
 
-
+#tweetContainer {
+  width: 100%;
+}
 /* tweet text */
 .tweet {
   /* margin: 10px auto; */
@@ -59,6 +61,9 @@ form .under-border {
 .tweetbody {
   width: 100%;
   margin-top: 1em;
+  border: 2px solid black;
+  padding: 10px;
+  margin: 10px 0;
 }
 .tweetbody:hover {
   box-shadow: 7px 6px 7px 0px #3477d9c2;
@@ -100,3 +105,8 @@ form .under-border {
 .fa-heart:hover {
   color: #f5b221;
 }
+.error {
+  color:red;
+  border-style: red;
+  display: none;
+} 
