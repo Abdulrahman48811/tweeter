@@ -63,7 +63,7 @@ form .under-border {
   margin-top: 1em;
   border: 2px solid black;
   padding: 10px;
-  margin: 10px 0;
+  margin: 20px 0;
 }
 .tweetbody:hover {
   box-shadow: 7px 6px 7px 0px #3477d9c2;
@@ -110,3 +110,44 @@ form .under-border {
   border-style: red;
   display: none;
 } 
+
+
+
+@media only screen and (min-width: 1200px) {
+  .container {
+    width: 70%;
+    /* display: none; */
+    /* position: absolute; */
+    /* margin-left: 10%;
+    margin-right: 10%; */
+    margin-top: 40px;
+   }
+  header {
+    padding-top: 11px;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    /* border: solid black; */
+    /* justify-content: space-between; */
+    width: 27%;
+    float: left;
+    margin-top: 120px;
+    margin-left: 3%;
+  
+    height: 400px;
+    background-color: #dd902c;;
+  }
+  main {
+    float: right;
+  }
+}
+
+ @media only screen and (min-width: 1200px) {
+  .nav {
+    background-color: #dd902c;
+  }
+}
+
+@media (min-width: 30em) {
+  
+}

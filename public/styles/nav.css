@@ -8,6 +8,7 @@ nav {
   align-items: center;
   padding: 0 1.5em;
   position: fixed;
+  z-index: 1;
 }
 nav span {
   font-family: 'Bungee', sans-serif;
