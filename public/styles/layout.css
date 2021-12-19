@@ -31,13 +31,7 @@ body {
  */
 
  main {
-  /* border: 2px solid red; */
   background-color: inherit;
   width: 100%;
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* align-items: center; */
   padding: 2em;
-  /* float: right; */
-  /* margin: 0 auto; */
-}
+ }

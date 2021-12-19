@@ -1,10 +1,3 @@
-// const { reset } = require("nodemon");
-
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
 const tweetData = {
   "user": {
     "name": "Newton",
@@ -16,7 +9,6 @@ const tweetData = {
   },
   "created_at": 1461116232227
 }
-// const $tweet = createTweetElement(tweetData);
 const escape = function (str) {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
@@ -34,7 +26,6 @@ const renderTweet = (tweets) => {
 }
 const createTweetElement = (tweetData) => {
   const $tweet = $(`<article>`).addClass('tweet')
-  // console.log(tweetData);
   let html = `
 <article class="tweetbody">
     <div>
@@ -59,7 +50,6 @@ const createTweetElement = (tweetData) => {
     </div>
     </article>`
   let tweetElement = $('#tweetContainer').append(html);
-  // document.getElementById('id-tweet').innerHTML = tweetElement;
   return tweetElement;
 }
 
@@ -70,7 +60,7 @@ $(document).ready(function () {
     event.preventDefault();
     const tweetValue = $("#tweet-text").val()
     if (!isTweetTextValid(tweetValue)) {
-      return renderError("Tweet is too long!");
+      return renderError("⚠️Tweet is too long!⚠️");
     };
     console.log(event.target);
     console.log(this);
@@ -96,8 +86,6 @@ $(document).ready(function () {
   loadTweets();
 
 });
-
-
 const isTweetTextValid = (tweetText) => {
     if (tweetText.length > 140) {
       return false;
