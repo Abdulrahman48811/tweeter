@@ -53,6 +53,7 @@ const createTweetElement = (tweetData) => {
   return tweetElement;
 }
 
+
 const $tweet = createTweetElement(tweetData);
 $(document).ready(function () {
   // Submit tweet
@@ -62,6 +63,9 @@ $(document).ready(function () {
     if (!isTweetTextValid(tweetValue)) {
       return renderError("⚠️Tweet is too long!⚠️");
     };
+    if (tweetValue === '') {
+      return renderError("⚠️Tweet cannot be empty!⚠️");
+    }
     console.log(event.target);
     console.log(this);
     $.ajax({
@@ -70,6 +74,8 @@ $(document).ready(function () {
       data: $(this).serialize()
     }).then(data => {
       loadTweets();
+      
+      $('.counter').val(140);
     })
     $('form').trigger('reset');
   })
