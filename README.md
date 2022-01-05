@@ -2,10 +2,10 @@
 
 Tweeter is a simple, single-page Twitter clone.
 
-!["Screenshot of URLs page"]("https://github.com/Abdulrahman48811/tweeter/blob/master/public/images/HOME%20PAGE~SMALLER%20SCREEN.png")
-!["Screenshot of URLs page"]("https://github.com/Abdulrahman48811/tweeter/blob/master/public/images/LARGER%20SCREEN.png")
-!["Screenshot of URLs page"]("https://github.com/Abdulrahman48811/tweeter/blob/master/public/images/%22LIKE%22%20A%20TWEET.png")
-!["Screenshot of URLs page"]("https://github.com/Abdulrahman48811/tweeter/blob/master/public/images/TOO%20MANY%20WORDS.png")
+!["Screenshot of URLs page"]("https://github.com/Abdulrahman48811/tweeter/blob/master/public/images/docs/LARGER%20SCREEN.png")
+!["Screenshot of URLs page"]("https://github.com/Abdulrahman48811/tweeter/blob/master/public/images/docs/HOME%20PAGE~SMALLER%20SCREEN.png")
+!["Screenshot of URLs page"]("https://github.com/Abdulrahman48811/tweeter/blob/master/public/images/docs/%22LIKE%22%20A%20TWEET.png")
+!["Screenshot of URLs page"]("https://github.com/Abdulrahman48811/tweeter/blob/master/public/images/docs/TOO%20MANY%20WORDS.png")
 
 
 ## Dependencies
